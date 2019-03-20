@@ -23,7 +23,8 @@ Pretty much a work in progress at the moment, but the checklist is the following
     - Sublime Merge
     - Rustup
     - Notion
-    - Git extras
+    - Git Extras
+    - Git Flow
 - [ ] @otak-work
     - Slack
     - Discord
