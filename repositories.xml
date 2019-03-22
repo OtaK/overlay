@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name><![CDATA[otak-overlay]]></name>
+    <description lang="en"><![CDATA[OtaK's Overlay]]></description>
+    <homepage>http://github.com/otak/overlay</homepage>
+    <owner type="person">
+      <email>amiot.mathieu@gmail.com</email>
+      <name><![CDATA[Mathieu Amiot]]></name>
+    </owner>
+    <source type="git">https://github.com/otak/overlay.git</source>
+    <feed>http://github.com/otak/overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
