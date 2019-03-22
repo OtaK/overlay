@@ -1,6 +1,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 DESCRIPTION="The Rust toolchain installer"
 HOMEPAGE="https://github.com/rust-lang/rustup.rs"
