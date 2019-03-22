@@ -1,4 +1,4 @@
-net-im/discord-bin
-net-im/slack-bin
-media-sound/spotify
-mail-client/mailspring
+>=net-im/discord-bin-0.0.9
+>=net-im/slack-bin-3.3.8
+>=media-sound/spotify-1.1.0
+>=mail-client/mailspring-bin-1.6.0

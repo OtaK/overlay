@@ -1,6 +1,6 @@
-app-editors/sublime-text
-dev-util/sublime-merge
-dev-util/rustup
-dev-util/notion-cli
-dev-vcs/git-extras
-dev-vcs/git-flow
+>=app-editors/sublime-text-3200
+>=dev-vcs/sublime-merge-1107
+>=sys-apps/rustup-9999
+>=sys-apps/notion-cli-0.2.2
+>=dev-vcs/git-extras-4.7.0
+>=dev-vcs/git-flow-1.11.0
