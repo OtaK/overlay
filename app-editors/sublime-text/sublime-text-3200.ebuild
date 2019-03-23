@@ -13,7 +13,7 @@ SRC_URI="${BASE_URI}/sublime_text_3_build_${PV}_x64.tar.bz2"
 LICENSE="Sublime"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="dbus"
 
 RESTRICT="mirror bindist"
 

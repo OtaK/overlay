@@ -36,9 +36,8 @@ RDEPEND="
     libnotify? ( x11-libs/libnotify )
     pulseaudio? ( media-sound/pulseaudio )
     systray? ( gnome-extra/gnome-integration-spotify )"
-    #sys-libs/glibc
 
-S=${WORKDIR}/
+S="${WORKDIR}/"
 
 QA_PREBUILT="opt/spotify/spotify-client/spotify"
 
