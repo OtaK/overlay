@@ -18,10 +18,10 @@ RDEPEND=""
 DEPEND=""
 
 src_compile() {
-    cargo_src_compile()
-    cargo_src_test()
+    cargo_src_compile
+    cargo_src_test
 }
 
 src_install() {
-    cargo_src_install()
+    cargo_src_install
 }

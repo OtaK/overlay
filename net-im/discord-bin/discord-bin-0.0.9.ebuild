@@ -7,7 +7,7 @@ inherit eutils gnome2-utils unpacker
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
-SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${P}.deb"
+SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/discord-${PV}.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

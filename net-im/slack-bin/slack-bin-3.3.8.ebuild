@@ -7,7 +7,8 @@ inherit gnome2-utils eutils rpm xdg
 
 DESCRIPTION="A messaging app for teams"
 HOMEPAGE="https://slack.com/"
-SRC_URI="https://downloads.slack-edge.com/linux_releases/${P}-0.1.fc21.x86_64.rpm"
+BUILD_ID="0.1.fc21"
+SRC_URI="https://downloads.slack-edge.com/linux_releases/slack-${PV}-${BUILD_ID}.x86_64.rpm"
 LICENSE="Slack"
 RESTRICT="mirror"
 

@@ -8,6 +8,9 @@ DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
 BUILD_ID_AMD64="237.g378f6f25-11"
+#BUILD_ID_X86=""
+#SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb )
+#   x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_X86}_i386.deb )"
 SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
@@ -36,8 +39,9 @@ RDEPEND="
     libnotify? ( x11-libs/libnotify )
     pulseaudio? ( media-sound/pulseaudio )
     systray? ( gnome-extra/gnome-integration-spotify )"
+    #sys-libs/glibc
 
-S="${WORKDIR}/"
+S=${WORKDIR}/
 
 QA_PREBUILT="opt/spotify/spotify-client/spotify"
 
@@ -73,7 +77,7 @@ src_install() {
     cat <<-EOF >"${D}"/usr/bin/spotify || die
         #! /bin/sh
         exec ${SPOTIFY_HOME}/spotify "\$@"
-    EOF
+EOF
     fperms +x /usr/bin/spotify
 
     local size
