@@ -2,9 +2,13 @@
 
 Personal overlay for the things I use, works on Funtoo, maybe it's not needed on Gentoo, because well updated packages
 
-Pretty much a work in progress at the moment, but the checklist is the following:
+To install:
 
-## Ebuilds
+`sudo layman -o https://raw.githubusercontent.com/OtaK/overlay/master/repositories.xml -f -a otak-overlay`
+
+## Overlay contents
+
+### Ebuilds
 
 - [x] Sublime Text 3 (3200)
 - [x] Sublime Merge (1107)
@@ -16,7 +20,7 @@ Pretty much a work in progress at the moment, but the checklist is the following
 - [x] Notion-cli (0.2.2)
 - [x] Git-extras (4.7.0)
 
-## Package sets
+### Package sets
 
 - [x] @otak-dev:
     - Sublime Text 3
@@ -30,3 +34,19 @@ Pretty much a work in progress at the moment, but the checklist is the following
     - Discord
     - Spotify (yes, this is work)
     - Mailspring
+
+
+## How to Contribute to this Overlay
+
+:author: Mathieu Amiot
+:contact: amiot.mathieu@gmail.com
+:language: English
+
+## Greetings GitHub Users!
+
+To contribute bug reports for this overlay, you can open up a GitHub issue or send
+me a pull request.
+
+If you are using ebuilds in this overlay as part of Funtoo Linux (because they are
+merged into the main Funtoo Linux Portage tree, for example,) then
+please also open an issue at `bugs.funtoo.org`_.
