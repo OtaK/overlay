@@ -36,12 +36,6 @@ To install:
     - Mailspring
 
 
-## How to Contribute to this Overlay
-
-:author: Mathieu Amiot
-:contact: amiot.mathieu@gmail.com
-:language: English
-
 ## Greetings GitHub Users!
 
 To contribute bug reports for this overlay, you can open up a GitHub issue or send
