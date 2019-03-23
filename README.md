@@ -12,6 +12,7 @@ To install:
 
 - [x] Sublime Text 3 (3200)
 - [x] Sublime Merge (1107)
+- [x] Tilix (1.9.0)
 - [x] Discord (0.0.9)
 - [x] Spotify (1.1.0.237.g378f6f25)
 - [x] Slack (3.3.8)
@@ -29,6 +30,7 @@ To install:
     - Notion
     - Git Extras
     - Git Flow
+    - Tilix
 - [x] @otak-work
     - Slack
     - Discord
