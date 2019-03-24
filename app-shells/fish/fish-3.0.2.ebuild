@@ -31,8 +31,6 @@ DEPEND="${RDEPEND}
     test? ( dev-tcltk/expect )
 "
 
-PATCHES=( "${FILESDIR}/fix-histfile-test-on-ppc.patch" )
-
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
