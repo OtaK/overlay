@@ -45,7 +45,8 @@ src_install(){
     for size in 16 32 48 128 256; do
         doicon --size "${size}" Icon/${size}x${size}/${PN}.png
     done
-    dobin "smerge"
+    dobin "sublime_merge"
+    dosym ../../opt/${PN}${MV}/sublime_merge /usr/bin/smerge
 }
 
 pkg_preinst(){
