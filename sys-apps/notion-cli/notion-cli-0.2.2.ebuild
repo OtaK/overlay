@@ -2,7 +2,7 @@
 
 EAPI=6
 
-inherit cargo
+inherit cargo git-r3
 
 EGIT_REPO_URI="https://github.com/notion-cli/notion.git"
 DESCRIPTION="Notion: the hassle-free JavaScript toolchain manager"

@@ -2,10 +2,11 @@
 
 EAPI=6
 
+inherit cargo git-r3
+
+EGIT_REPO_URI="https://github.com/rust-lang/rustup-rs.git"
 DESCRIPTION="The Rust toolchain installer"
-RESTRICT="primaryuri"
 HOMEPAGE="https://github.com/rust-lang/rustup.rs"
-SRC_URI="https://sh.rustup.rs/rustup-init.sh"
 
 KEYWORDS="~amd64"
 
@@ -13,9 +14,15 @@ LICENSE="Apache-2.0/MIT"
 SLOT="0"
 IUSE=""
 
-RDEPEND="net-misc/curl"
-DEPEND="${RDEPEND}"
+RDEPEND=""
+DEPEND=""
+
+src_compile() {
+    git-r3_fetch $EGIT_REPO_URI refs/heads/stable
+    git-r3_checkout $EGIT_REPO_URI stable
+    cargo_src_compile
+}
 
 src_install() {
-    sh -s rustup-init.sh -- -y --default-toolchain stable
+    cargo run --release -- -y --default-toolchain stable
 }
