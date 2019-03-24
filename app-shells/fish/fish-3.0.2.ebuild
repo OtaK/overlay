@@ -61,7 +61,3 @@ src_install() {
 src_test() {
     cmake-utils_src_make -j1 test
 }
-
-pkg_postinst() {
-    readme.gentoo_print_elog
-}
