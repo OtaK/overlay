@@ -16,7 +16,7 @@ SLOT="0"
 RDEPEND="dev-vcs/git"
 
 src_compile() {
-    git-r3_fetch
+    git-r3_fetch "refs/tags/${PV}"
     git-r3_checkout ${PV}
     :;
     # we skip this because the first target of the
