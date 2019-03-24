@@ -4,6 +4,7 @@ EAPI=6
 
 DESCRIPTION="The Rust toolchain installer"
 HOMEPAGE="https://github.com/rust-lang/rustup.rs"
+SRC_URI="https://sh.rustup.rs/rustup-init.sh"
 
 KEYWORDS="~amd64"
 
@@ -15,5 +16,5 @@ RDEPEND="net-misc/curl"
 DEPEND="${RDEPEND}"
 
 src_install() {
-    curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
+    sh -s rustup-init.sh -- -y --default-toolchain stable
 }
