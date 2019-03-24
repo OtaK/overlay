@@ -38,6 +38,7 @@ To install:
     - Mailspring
     - MPV
     - Albert
+    - Google Chrome
 
 
 ## Greetings GitHub Users!
