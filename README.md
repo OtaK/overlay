@@ -17,7 +17,6 @@ To install:
 - [x] Spotify (1.1.0.237.g378f6f25)
 - [x] Slack (3.3.8)
 - [x] Mailspring (1.6.0)
-- [x] Rustup (9999, it's self updating)
 - [x] Notion-cli (0.2.2)
 - [x] Git-extras (4.7.0)
 
@@ -26,7 +25,6 @@ To install:
 - [x] @otak-dev:
     - Sublime Text 3
     - Sublime Merge
-    - Rustup
     - Notion
     - Git Extras
     - Git Flow
