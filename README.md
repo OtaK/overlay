@@ -36,6 +36,8 @@ To install:
     - Discord
     - Spotify (yes, this is work)
     - Mailspring
+    - MPV
+    - Albert
 
 
 ## Greetings GitHub Users!

@@ -2,3 +2,6 @@
 >=net-im/slack-bin-3.3.8
 >=media-sound/spotify-1.1.0
 >=mail-client/mailspring-bin-1.6.0
+>=x11-misc/albert-0.14.22
+>=media-video/mpv-0.27.2
+www-client/google-chrome
