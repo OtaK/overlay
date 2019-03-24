@@ -56,7 +56,6 @@ src_configure() {
 src_install() {
     cmake-utils_src_install
     keepdir /usr/share/fish/vendor_{completions,conf,functions}.d
-    readme.gentoo_create_doc
 }
 
 src_test() {
