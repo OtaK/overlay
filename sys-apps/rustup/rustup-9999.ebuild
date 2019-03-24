@@ -3,6 +3,7 @@
 EAPI=6
 
 DESCRIPTION="The Rust toolchain installer"
+RESTRICT="primaryuri"
 HOMEPAGE="https://github.com/rust-lang/rustup.rs"
 SRC_URI="https://sh.rustup.rs/rustup-init.sh"
 

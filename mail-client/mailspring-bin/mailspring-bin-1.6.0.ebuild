@@ -8,6 +8,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Advanced email client"
 HOMEPAGE="https://getmailspring.com"
+RESTRICT="primaryuri"
 SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_PN}-${PV}-amd64.deb -> ${P}.deb"
 
 LICENSE="GPLv3"

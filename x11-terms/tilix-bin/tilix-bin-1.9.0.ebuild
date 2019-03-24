@@ -8,6 +8,7 @@ inherit eutils
 
 DESCRIPTION="A tiling terminal emulator for Linux using GTK+ 3"
 HOMEPAGE="https://github.com/gnunn1/tilix"
+RESTRICT="primaryuri"
 SRC_URI="https://github.com/gnunn1/tilix/releases/download/$PV/tilix.zip -> tilix-bin-$PV.zip"
 
 LICENSE="GPL-2"
