@@ -18,7 +18,7 @@ RDEPEND=""
 DEPEND=""
 
 src_compile() {
-    git-r3_fetch origin refs/tags/v${PV}
+    git-r3_fetch $EGIT_REPO_URI refs/tags/v${PV}
     git-r3_checkout "v${PV}"
     cargo_src_compile
     cargo_src_test
