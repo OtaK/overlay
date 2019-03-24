@@ -1,58 +1,64 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit desktop gnome2-utils
+
+# get the major version from PV
+MV=${PV:0:1}
+MY_PV=${PV#*_p}
 
 DESCRIPTION="Sophisticated text editor for code, markup and prose"
-HOMEPAGE="http://www.sublimetext.com"
-BASE_URI="https://download.sublimetext.com"
-SRC_URI="${BASE_URI}/sublime_text_3_build_${PV}_x64.tar.bz2"
+HOMEPAGE="https://www.sublimetext.com"
+SRC_URI="
+    amd64? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x64.tar.bz2 )
+    x86? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x32.tar.bz2 )"
 
 LICENSE="Sublime"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="dbus"
+RESTRICT="bindist mirror strip"
 
-RESTRICT="mirror bindist"
-
-DEPEND=">=media-libs/libpng-1.6.35-r1:*
-    >=x11-libs/gtk+-2.24.32-r1:*
+RDEPEND="
+    dev-libs/glib:2
+    x11-libs/gtk+:2
+    x11-libs/libX11
     dbus? ( sys-apps/dbus )"
-RDEPEND="${DEPEND}"
 
-pkg_nofetch() {
-    eerror "Sublime Text download website seems to be down :("
-}
+QA_PREBUILT="*"
+S="${WORKDIR}/sublime_text_${MV}"
+
+# Sublime bundles the kitchen sink, which includes python and other assorted
+# modules. Do not try to unbundle these because you are guaranteed to fail.
 
 src_install() {
-    local targetdir="/opt/sublime_text_3"
-    instinto "$targetdir"
-    into "$targetdir"
-    exeinto "$targetdir"
-    doins -r "Icon"
-    doins -r "Packages"
-    doins "python3.3.zip"
-    doins "sublime.py"
-    doins "sublime-plugin.py"
-    doexe "sublime_text"
-    doexe "plugin_host"
+    insinto /opt/${PN}${MV}
+    doins -r Packages Icon
+    doins changelog.txt sublime_plugin.py sublime.py python3.3.zip
+
+    exeinto /opt/${PN}${MV}
+    doexe crash_reporter plugin_host sublime_text
+    dosym ../../opt/${PN}${MV}/sublime_text /usr/bin/subl
 
     local size
-    for size in 16 32 48 128 256 ; do
-        insinto /usr/share/icons/hicolor/${size}x${size}/apps
-        newins "Icon/${size}x${size}/sublime-text.png" sublime_text.png
+    for size in 32 48 128 256; do
+        dosym ../../../../../../opt/${PN}${MV}/Icon/${size}x${size}/sublime-text.png \
+            /usr/share/icons/hicolor/${size}x${size}/apps/subl.png
     done
 
-    domenu "sublime_text.desktop"
+    make_desktop_entry "subl" "Sublime Text ${MV}" "subl" \
+        "TextEditor;IDE;Development" "StartupNotify=true"
+
+    # needed to get WM_CLASS lookup right
+    mv "${ED%/}"/usr/share/applications/subl{-sublime-text,}.desktop || die
 }
 
-pkg_preinst() {
-    gnome2_icon_savelist
+pkg_postrm() {
+    gnome2_icon_cache_update
 }
 
 pkg_postinst() {
     gnome2_icon_cache_update
-    dosym $bindir/subl${MV} /usr/bin/subl
 }

@@ -4,7 +4,7 @@ EAPI=6
 
 inherit cargo git-r3
 
-EGIT_REPO_URI="https://github.com/rust-lang/rustup-rs.git"
+EGIT_REPO_URI="https://github.com/rust-lang/rustup.rs.git"
 DESCRIPTION="The Rust toolchain installer"
 HOMEPAGE="https://github.com/rust-lang/rustup.rs"
 

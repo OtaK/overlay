@@ -1,19 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-inherit eutils gnome2-utils unpacker
+MY_PN=${PN/-bin/}
+MY_BIN="D${MY_PN/d/}"
+
+inherit desktop gnome2-utils pax-utils unpacker xdg-utils
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
-RESTRICT="primaryuri"
-SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/discord-${PV}.deb"
+SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="amd64"
-IUSE=""
+KEYWORDS="~amd64"
+IUSE="pax_kernel"
+RESTRICT="mirror bindist"
 
 RDEPEND="
     dev-libs/atk
@@ -27,11 +30,13 @@ RDEPEND="
     media-libs/freetype:2
     net-print/cups
     sys-apps/dbus
+    sys-libs/libcxx
     x11-libs/cairo
     x11-libs/gdk-pixbuf:2
-    x11-libs/gtk+:2
+    x11-libs/gtk+:3
     x11-libs/libX11
     x11-libs/libXScrnSaver
+    x11-libs/libxcb
     x11-libs/libXcomposite
     x11-libs/libXcursor
     x11-libs/libXdamage
@@ -46,48 +51,44 @@ RDEPEND="
 
 S=${WORKDIR}
 
-RESTRICT="mirror bindist"
-
 QA_PREBUILT="
-    opt/discord/share/discord/Discord
-    opt/discord/share/discord/libnode.so
-    opt/discord/share/discord/libffmpeg.so
+    opt/discord/${MY_BIN}
+    opt/discord/libEGL.so
+    opt/discord/libGLESv2.so
+    opt/discord/swiftshader/libEGL.so
+    opt/discord/swiftshader/libGLESv2.so
+    opt/discord/libVkICD_mock_icd.so
+    opt/discord/libffmpeg.so
 "
-
-src_unpack() {
-    unpack_deb ${A}
-}
 
 src_prepare() {
     default
 
     sed -i \
-        -e "s:/usr/share/discord/Discord:discord:g" \
-        usr/share/${PN}/${PN}.desktop || die
+        -e "s:/usr/share/discord/Discord:/opt/${MY_PN}/${MY_BIN}:g" \
+        usr/share/${MY_PN}/${MY_PN}.desktop || die
 }
 
 src_install() {
-    insinto /opt/${PN}
-    doins -r usr/.
+    doicon usr/share/${MY_PN}/${MY_PN}.png
+    domenu usr/share/${MY_PN}/${MY_PN}.desktop
 
-    fperms +x /opt/${PN}/bin/${PN}
-    dosym /opt/${PN}/bin/${PN} /usr/bin/${PN}
-    dosym /opt/${PN}/share/applications/${PN}.desktop \
-        /usr/share/applications/${PN}.desktop
-    dosym /opt/${PN}/share/pixmaps/${PN}.png \
-        /usr/share/pixmaps/${PN}.png
+    insinto /opt/${MY_PN}
+    doins -r usr/share/${MY_PN}/.
+    fperms +x /opt/${MY_PN}/${MY_BIN}
+    dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
-    domenu "/opt/${PN}/sublime_text.desktop"
-}
-
-pkg_preinst() {
-    gnome2_icon_savelist
+    use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
+    xdg_desktop_database_update
+    xdg_mimeinfo_database_update
     gnome2_icon_cache_update
 }
 
 pkg_postrm() {
+    xdg_desktop_database_update
+    xdg_mimeinfo_database_update
     gnome2_icon_cache_update
 }

@@ -33,7 +33,7 @@ src_install() {
     dobin usr/bin/tilix || die
 }
 
-pkg_postinst()
-{
+pkg_postinst() {
     glib-compile-schemas /usr/share/glib-2.0/schemas/
+    gnome2_icon_cache_update
 }
