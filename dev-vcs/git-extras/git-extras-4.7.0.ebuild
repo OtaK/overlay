@@ -16,7 +16,8 @@ SLOT="0"
 RDEPEND="dev-vcs/git"
 
 src_compile() {
-    git-r3_checkout 4.7.0
+    git-r3_fetch
+    git-r3_checkout ${PV}
     :;
     # we skip this because the first target of the
     # Makefile is "install" and plain "make" would
