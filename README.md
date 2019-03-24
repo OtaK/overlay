@@ -18,6 +18,7 @@ To install:
 - [x] Slack (3.3.8)
 - [x] Mailspring (1.6.0)
 - [x] Git-extras (4.7.0)
+- [x] Fish (3.0.2)
 
 ### Package sets
 
@@ -27,6 +28,7 @@ To install:
     - Git Extras
     - Git Flow
     - Tilix
+    - Fish
 - [x] @otak-work
     - Slack
     - Discord
