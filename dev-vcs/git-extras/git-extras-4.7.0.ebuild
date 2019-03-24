@@ -17,7 +17,7 @@ RDEPEND="dev-vcs/git"
 
 src_compile() {
     git-r3_fetch $EGIT_REPO_URI refs/tags/${PV}
-    git-r3_checkout ${PV}
+    git-r3_checkout $EGIT_REPO_URI ${PV}
     :;
     # we skip this because the first target of the
     # Makefile is "install" and plain "make" would
