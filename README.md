@@ -20,6 +20,8 @@ To install:
 - [x] Git-extras (4.7.0)
 - [x] Fish (3.0.2)
 - [x] Gnome Shell Extension AppIndicator (22, compatible up to gnome-shell 3.30)
+- [x] Plank Dock (0.11.4)
+
 
 ### Package sets
 
