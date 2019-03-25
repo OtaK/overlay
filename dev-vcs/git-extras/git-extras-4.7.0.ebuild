@@ -5,6 +5,7 @@ EAPI="5"
 inherit git-r3 bash-completion-r1
 
 EGIT_REPO_URI="https://github.com/tj/git-extras.git"
+EGIT_COMMIT="${PV}"
 DESCRIPTION="GIT utilities -- repo summary, repl, changelog population, author commit percentages and more"
 HOMEPAGE="https://github.com/tj/git-extras"
 
@@ -14,16 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="dev-vcs/git"
-
-src_compile() {
-    git-r3_fetch $EGIT_REPO_URI refs/tags/${PV}
-    git-r3_checkout $EGIT_REPO_URI ${PV}
-    :;
-    # we skip this because the first target of the
-    # Makefile is "install" and plain "make" would
-    # actually run "make install"
-
-}
 
 src_install() {
     emake DESTDIR="${D}" PREFIX="/usr" install

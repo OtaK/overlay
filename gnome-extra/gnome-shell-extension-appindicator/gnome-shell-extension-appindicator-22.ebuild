@@ -5,6 +5,7 @@ EAPI="6"
 inherit git-r3
 
 EGIT_REPO_URI="https://github.com/ubuntu/gnome-shell-extension-appindicator.git"
+EGIT_COMMIT="v${PV}"
 DESCRIPTION="Adds KStatusNotifierItem support to the Shell A.K.A. SysTray"
 HOMEPAGE="https://github.com/ubuntu/gnome-shell-extension-appindicator"
 
@@ -20,12 +21,6 @@ RDEPEND="
     dev-libs/libappindicator
     <gnome-base/gnome-shell-3.31
 "
-
-src_compile() {
-    git-r3_fetch $EGIT_REPO_URI refs/tags/v${PV}
-    git-r3_checkout $EGIT_REPO_URI v${PV}
-    :;
-}
 
 src_install() {
     local _u=$(awk -F'"' '/uuid/ {print $4}' metadata.json)
