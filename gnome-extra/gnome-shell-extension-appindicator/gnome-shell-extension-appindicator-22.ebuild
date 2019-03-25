@@ -22,6 +22,10 @@ RDEPEND="
     <gnome-base/gnome-shell-3.31
 "
 
+src_compile() {
+    :;
+}
+
 src_install() {
     local _u=$(awk -F'"' '/uuid/ {print $4}' metadata.json)
     insinto /usr/share/gnome-shell/extensions/${_u}
