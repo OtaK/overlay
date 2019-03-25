@@ -19,6 +19,7 @@ To install:
 - [x] Mailspring (1.6.0)
 - [x] Git-extras (4.7.0)
 - [x] Fish (3.0.2)
+- [x] Gnome Shell Extension AppIndicator (22, compatible up to gnome-shell 3.30)
 
 ### Package sets
 
