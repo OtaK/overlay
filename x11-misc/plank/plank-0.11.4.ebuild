@@ -1,46 +1,69 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-VALA_MIN_API_VERSION=0.26
+VALA_MIN_API_VERSION=0.24
 VALA_USE_DEPEND=vapigen
 
-inherit vala autotools-utils
+inherit gnome2-utils autotools vala xdg-utils
 
-DESCRIPTION="Dock panel famious docky"
-HOMEPAGE="https://launchpad.net/plank"
-SRC_URI="http://launchpad.net/${PN}/1.0/${PV}/+download/${P}.tar.xz"
+DESCRIPTION="The dock for elementary Pantheon, stupidly simple"
+HOMEPAGE="https://launchpad.net/plank https://launchpad.net/pantheon-dock"
+SRC_URI="https://launchpad.net/plank/1.0/${PV}/+download/${P}.tar.xz"
 
-LICENSE="LGPL-3"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="+introspection doc static-libs"
-RESTRICT="mirror"
-RDEPEND=">=dev-libs/glib-2.32:2
+KEYWORDS="amd64 x86"
+IUSE="+dbus debug nls static-libs"
+
+CDEPEND="
+	dev-libs/glib:2
+	dbus? ( dev-libs/libdbusmenu[gtk3] )
 	dev-libs/libgee:0.8
-	x11-libs/gtk+:3
-	x11-libs/bamf
+	>=x11-libs/bamf-0.2.92
+	>=x11-libs/cairo-1.10
+	>=x11-libs/gdk-pixbuf-2.26.0
+	>=x11-libs/gtk+-3.10.0:3
 	x11-libs/libX11
-	dev-libs/libdbusmenu
-	x11-libs/libwnck:3"
-DEPEND="${RDEPEND}
+	x11-libs/libwnck:3
+"
+RDEPEND="${CDEPEND}"
+DEPEND="${CDEPEND}
 	$(vala_depend)
 	dev-util/intltool
-	gnome-base/gnome-common
-	sys-devel/gettext
-	virtual/pkgconfig"
-DOCS=( AUTHORS COPYRIGHT )
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
+
+DOCS=( AUTHORS COPYING COPYRIGHT NEWS README )
 
 src_prepare() {
-	NOCONFIGURE=1 REQUIRED_PKG_CONFIG_VERSION=0.1 ./autogen.sh
+	eautoreconf
+
 	vala_src_prepare
+	default
 }
 
-pkg_postint() {
-	gnome2_icon_cache_update
+src_configure() {
+	econf \
+		$(use_enable debug) \
+		$(use_enable nls) \
+		$(use_enable dbus dbusmenu)
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+	gnome2_schemas_savelist
+}
+
+pkg_postinst() {
+	gnome2_gconf_install
+	gnome2_schemas_update
+	gnome2_icon_cache_upadte
 }
 
 pkg_postrm() {
+	gnome2_gconf_uninstall
+	gnome2_schemas_update
 	gnome2_icon_cache_update
 }
