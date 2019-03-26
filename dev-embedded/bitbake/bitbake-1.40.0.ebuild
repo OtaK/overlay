@@ -26,9 +26,9 @@ DEPEND="doc? ( dev-libs/libxslt )"
 src_prepare() {
     if ! use doc ; then
         sed -i -e 's:doctype = "html":doctype = "none":' \
-            -e 's:("share/doc/bitbake-%s/manual.*))::' setup.py || die
+            -e 's:("doc/bitbake-%s/manual.*))::' setup.py || die
         echo "none:" >> doc/manual/Makefile || die
     else
-        sed -i -e "s:\(share/doc/bitbake-%s.* %\) __version__:\1 \"${PV}\":" setup.py || die
+        sed -i -e "s:\(doc/bitbake-%s.* %\) __version__:\1 \"${PV}\":" setup.py || die
     fi
 }
