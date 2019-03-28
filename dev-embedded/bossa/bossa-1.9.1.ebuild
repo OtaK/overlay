@@ -15,9 +15,19 @@ HOMEPAGE="https://github.com/shumatech/BOSSA"
 LICENSE="BSD 3-clause "New" or "Revised" License"
 SLOT="0"
 IUSE=""
+S="${WORKDIR}/BOSSA-${PV}"
 
-RDEPEND=""
+RDEPEND="x11-libs/wxGTK"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+    eapply_user
+    :;
+}
+
+src_compile() {
+    emake all
+}
 
 src_install() {
     dobin bin/bossa*
