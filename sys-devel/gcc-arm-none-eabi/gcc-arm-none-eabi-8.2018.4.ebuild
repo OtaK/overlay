@@ -20,8 +20,10 @@ RESTRICT="strip"
 QA_PREBUILT="*"
 
 DEPEND=""
-RDEPEND="sys-libs/ncurses:5
-		dev-lang/python:2.7"
+RDEPEND="
+	sys-libs/ncurses:5[tinfo]
+	dev-lang/python:2.7
+"
 
 S="${WORKDIR}/${MY_P}"
 
