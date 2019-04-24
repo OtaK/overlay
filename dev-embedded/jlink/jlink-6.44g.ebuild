@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit versionator
+inherit eutils versionator
 
 #MY_P="JLink_Linux_V${PV/\./}_$(usex amd64 'x86_64' 'i386')"
 #MY_P="JLink_Linux_V620h_x86_64"
