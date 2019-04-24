@@ -1,0 +1,3 @@
+dev-embedded/bossa
+dev-embedded/jlink
+sys-devel/gcc-arm-none-eabi
