@@ -17,7 +17,7 @@ SRC_URI="https://github.com/arc-design/${PN}/releases/download/${PV}/${P}.tar.xz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce"
+IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce plank"
 
 SASSC_DEPEND="
 	dev-lang/sassc
@@ -76,8 +76,8 @@ src_configure() {
 
 	econf \
 		--disable-openbox \
-		--disable-plank \
 		--disable-unity \
+		$(use_enable plank) \
 		$(use_enable cinnamon) \
 		$(use_enable gtk2) \
 		$(use_enable gtk3) \
