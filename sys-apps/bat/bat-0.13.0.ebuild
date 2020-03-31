@@ -210,6 +210,7 @@ QA_FLAGS_IGNORED="/usr/bin/bat"
 pkg_nofetch() {
 	einfo "Downloading wasi dep manually since crate ebuild profile is broken"
 	wget https://crates.io/api/v1/crates/wasi/0.9.0+wasi-snapshot-preview1/download -O /var/cache/portage/distfiles/wasi-0.9.0+wasi-snapshot-preview1.crate
+	einfo "Please retry emerging sys-apps/bat"
 }
 
 src_install() {
