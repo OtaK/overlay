@@ -12,7 +12,7 @@ HOMEPAGE="https://www.rust-lang.org/"
 SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
-SLOT="stable"
+SLOT="current"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="clippy cpu_flags_x86_sse2 doc rustfmt"
 
