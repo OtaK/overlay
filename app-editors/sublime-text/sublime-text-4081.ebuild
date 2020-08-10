@@ -32,7 +32,7 @@ DEPEND=">=media-libs/libpng-1.2.46:*
 RDEPEND="${DEPEND}"
 
 QA_PREBUILT="*"
-S="${WORKDIR}/sublime_text_${MV}"
+S="${WORKDIR}/sublime_text"
 
 pkg_nofetch() {
     eerror "Sublime Text official site seems to be unresponsive."
