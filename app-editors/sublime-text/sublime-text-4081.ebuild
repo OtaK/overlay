@@ -8,7 +8,6 @@ inherit eutils gnome2-utils
 MV="${PV:0:1}"
 
 MY_PN=${PN/-/_}
-MY_PV=${PV#*_p}
 MY_MV_PN="${MY_PN}_${MV}"
 MY_P="Sublime%20Text"
 S="${WORKDIR}/${MY_MV_PN}"
@@ -17,11 +16,10 @@ DESCRIPTION="Sophisticated text editor for code, markup and prose"
 HOMEPAGE="http://www.sublimetext.com"
 
 BASE_URI="https://download.sublimetext.com"
-SRC_URI="amd64? ( ${BASE_URI}/${MY_PN}_${MV}_build_${MY_PV}_x64.tar.bz2 )
-x86? ( ${BASE_URI}/${MY_PN}_${MV}_build_${MY_PV}_x32.tar.bz2 )"
+SRC_URI="amd64? ( ${BASE_URI}/${MY_PN}_build_${PV}_x64.tar.xz )"
 LICENSE="Sublime"
 SLOT="${MV}"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="multislot dbus"
 RESTRICT="bindist mirror strip"
 

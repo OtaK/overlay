@@ -1,9 +1,9 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils xdg-utils
+inherit desktop xdg
 
 MY_PN=${PN/-/_}
 
@@ -31,36 +31,18 @@ QA_PREBUILD="*"
 S="${WORKDIR}/${MY_PN}"
 
 src_prepare(){
-    sed -i -e "s#/opt/sublime_merge#/opt/sublime-merge#" ${MY_PN}.desktop
-    default_src_prepare
+    sed -i -e "/Actions/d" "${MY_PN}.desktop"
+    default
 }
 
 src_install(){
-    insinto /opt/${PN}
-    doins -r Icon Packages changelog.txt
-    exeinto /opt/${PN}
-    doexe crash_reporter git-credential-sublime ssh-askpass-sublime ${MY_PN}
+    mkdir -p "${ED%/}"/opt/${MY_PN}
+    cp -r . "${ED%/}"/opt/${MY_PN}
+    rm "${ED%/}"/opt/${MY_PN}/${MY_PN}.desktop
     domenu ${MY_PN}.desktop
     local size
     for size in 16 32 48 128 256; do
         doicon --size "${size}" Icon/${size}x${size}/${PN}.png
     done
-    dobin "sublime_merge"
-    dosym ../../opt/${PN}${MV}/sublime_merge /usr/bin/smerge
-}
-
-pkg_preinst(){
-    gnome2_icon_savelist
-}
-
-pkg_postinst(){
-    gnome2_icon_cache_update
-    xdg_desktop_database_update
-    xdg_mimeinfo_database_update
-}
-
-pkg_postrm(){
-    gnome2_icon_cache_update
-    xdg_desktop_database_update
-    xdg_mimeinfo_database_update
+    dobin "${FILESDIR}/smerge"
 }
