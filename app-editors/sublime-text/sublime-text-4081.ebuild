@@ -63,7 +63,6 @@ src_install() {
 	done
 
 	make_desktop_entry "subl${MV} %F" "Sublime Text ${MV}" sublime_text "Development;TextEditor;IDE" "StartupNotify=true"
-	mv "${ED%/}"/usr/share/applications/subl{-sublime-text,}.desktop || die
 }
 
 pkg_preinst() {
