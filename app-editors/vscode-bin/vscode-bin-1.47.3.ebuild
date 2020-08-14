@@ -40,22 +40,25 @@ pkg_setup() {
 }
 
 src_install() {
-	pax-mark m "${MY_INSTALL_DIR}/${MY_EXEC}"
-	insinto "${MY_INSTALL_DIR}"
+	local DEST="${MY_INSTALL_DIR}"
+	pax-mark m "${DEST}/${MY_EXEC}"
+	insinto "${DEST}"
 	doins -r *
-	dosym "${MY_INSTALL_DIR}/${MY_EXEC}" "/usr/bin/${PN}"
-	make_wrapper "${PN}" "${MY_INSTALL_DIR}/${MY_EXEC}"
+	dosym "${DEST}/bin/${MY_EXEC}" "/usr/bin/vscode"
+	dosym "${DEST}/bin/${MY_EXEC}" "/usr/bin/code"
+	make_wrapper "${PN}" "${DEST}/${MY_EXEC}"
 	domenu ${FILESDIR}/${PN}.desktop
 	newicon ${S}/resources/app/resources/linux/code.png ${PN}.png
 
-	fperms +x "${MY_INSTALL_DIR}/${MY_EXEC}"
-        fperms 4755 "${MY_INSTALL_DIR}/chrome-sandbox"
-        fperms +x "${MY_INSTALL_DIR}/libEGL.so"
-        fperms +x "${MY_INSTALL_DIR}/libGLESv2.so"
-        fperms +x "${MY_INSTALL_DIR}/libffmpeg.so"
-
-	#fix Spawn EACESS bug #25848
-	fperms +x "${MY_INSTALL_DIR}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+	fperms +x "${DEST}/${MY_EXEC}"
+	fperms 4755 "${DEST}/chrome-sandbox"
+	fperms +x "${DEST}/libEGL.so"
+	fperms +x "${DEST}/libGLESv2.so"
+	fperms +x "${DEST}/libffmpeg.so"
+	fperms +x "${DEST}/code"
+	fperms +x "${DEST}/bin/code"
+	fperms +x "${DEST}/resources/app/node_modules.asar.unpacked/vscode-ripgrep/bin/rg"
+	fperms +x "${DEST}/resources/app/extensions/git/dist/askpass.sh"
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.rtf" "LICENSE.rtf"
 }
