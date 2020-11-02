@@ -72,6 +72,7 @@ src_install() {
 	insinto /opt/Insomnia
 	doins -r opt/Insomnia/.
 	fperms +x /opt/Insomnia/insomnia
+	fperms 4755 /opt/Insomnia/chrome-sandbox
 	dosym ../Insomnia/insomnia opt/bin/insomnia
 
 	pax-mark -m "${ED}"/opt/Insomnia/insomnia
