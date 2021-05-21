@@ -20,7 +20,7 @@ BASE_URI="https://download.sublimetext.com"
 SRC_URI="amd64? ( ${BASE_URI}/${MY_PN}_${MV}_build_${MY_PV}_x64.tar.bz2 )
 x86? ( ${BASE_URI}/${MY_PN}_${MV}_build_${MY_PV}_x32.tar.bz2 )"
 LICENSE="Sublime"
-SLOT="${MV}"
+SLOT="3"
 KEYWORDS="~amd64 ~x86"
 IUSE="multislot dbus"
 RESTRICT="bindist mirror strip"
