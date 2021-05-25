@@ -88,7 +88,7 @@ eselect_sublime_update() {
 	elog "Updating Sublime Text to the latest installed version"
 	elog "you can select the version you want to use just using"
 	elog
-	elog "eselect sublime set sublime_text_2"
+	elog "eselect sublime set sublime_text_3"
 	einfo
 	eselect sublime set sublime_text_${MV} --use-old
 }

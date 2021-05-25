@@ -62,7 +62,7 @@ src_install() {
 		newins "Icon/${size}x${size}/sublime-text.png" sublime_text_${MV}.png
 	done
 
-	make_desktop_entry "subl${MV} %F" "Sublime Text ${MV}" sublime_text${MV} "Development;TextEditor;IDE" "StartupNotify=true"
+	make_desktop_entry "subl${MV} %F" "Sublime Text ${MV}" sublime_text_${MV} "Development;TextEditor;IDE" "StartupNotify=true"
 }
 
 pkg_preinst() {
@@ -89,7 +89,7 @@ eselect_sublime_update() {
 	elog "Updating Sublime Text to the latest installed version"
 	elog "you can select the version you want to use just using"
 	elog
-	elog "eselect sublime set sublime_text_2"
+	elog "eselect sublime set sublime_text_4"
 	einfo
 	eselect sublime set sublime_text_${MV} --use-old
 }
