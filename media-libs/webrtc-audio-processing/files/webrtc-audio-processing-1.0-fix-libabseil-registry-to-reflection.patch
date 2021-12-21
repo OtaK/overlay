@@ -1,0 +1,11 @@
+--- a/meson.build	2021-12-21 19:46:15.652163519 +0100
++++ b/meson.build	2021-12-21 19:46:38.859164717 +0100
+@@ -46,7 +46,7 @@
+   cpp.find_library('absl_flags_internal'),
+   cpp.find_library('absl_flags_marshalling'),
+   cpp.find_library('absl_flags_parse'),
+-  cpp.find_library('absl_flags_registry'),
++  cpp.find_library('absl_flags_reflection'),
+   cpp.find_library('absl_flags_usage_internal'),
+   cpp.find_library('absl_raw_logging_internal'),
+   cpp.find_library('absl_strings'),
