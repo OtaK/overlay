@@ -8,7 +8,7 @@ HOMEPAGE="https://github.com/zen-kernel/zen-kernel"
 
 K_SECURITY_UNSUPPORTED="1"
 K_WANT_GENPATCHES="base extras"
-K_GENPATCHES_VER="2"
+K_GENPATCHES_VER="1"
 K_NOSETEXTRAVERSION="1"
 
 LQX_EXTRAVERSION="lqx2"
