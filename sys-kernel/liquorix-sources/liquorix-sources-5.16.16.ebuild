@@ -7,11 +7,11 @@ KEYWORDS="amd64 x86"
 HOMEPAGE="https://github.com/zen-kernel/zen-kernel"
 
 K_SECURITY_UNSUPPORTED="1"
-K_WANT_GENPATCHES="base"
-K_GENPATCHES_VER="2"
+K_WANT_GENPATCHES="base extras"
+K_GENPATCHES_VER="17"
 K_NOSETEXTRAVERSION="1"
 
-LQX_EXTRAVERSION="lqx1"
+LQX_EXTRAVERSION="lqx2"
 
 inherit kernel-2
 detect_version
@@ -21,7 +21,7 @@ RDEPEND="virtual/linux-sources"
 
 DESCRIPTION="Linux - Liquorix flavour"
 
-K_BRANCH_ID="5.15"
+K_BRANCH_ID="5.16"
 
 LQX_URI="https://github.com/zen-kernel/zen-kernel/releases/download/v${PV}-${LQX_EXTRAVERSION}/v${PV}-${LQX_EXTRAVERSION}.patch.xz"
 
